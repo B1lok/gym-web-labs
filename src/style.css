@@ -38,3 +38,9 @@
     font-size: larger;
     color: #ffffff;
 }
+
+@media only screen and (max-width:407px) {
+    .navbar-list {
+        flex-direction: column;
+    }
+}
