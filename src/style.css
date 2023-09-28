@@ -30,5 +30,11 @@
 
 .nav-link {
     text-decoration: none;
-    color: rgb(240, 240, 240);
+    color: rgb(255, 202, 202);
+    transition: 1s all;
+}
+
+.nav-link:hover {
+    font-size: larger;
+    color: #ffffff;
 }
