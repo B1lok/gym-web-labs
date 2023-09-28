@@ -1,3 +1,66 @@
+
+html {
+    scroll-behavior: smooth;
+}
+
+.slider{
+    height: 500px;
+}
+svg {
+    transition: transform 0.5s;
+}
+svg:hover {
+    transform: scale(1.2);
+}
+.loader {
+    width: 15px;
+    height: 20px;
+    margin-left: 15px;
+    background: black;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: bump 0.4s ease-in infinite alternate;
+}
+.loader::after {
+    content: '';
+    box-sizing: border-box;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, 0);
+    position: absolute;
+    border: 15px solid transparent;
+    border-top-color: black;
+}
+
+@keyframes bump {
+    0% {
+        transform: translate(-50%, 5px);
+    }
+    100% {
+        transform: translate(-50%, -5px);
+    }
+}
+.about-loader {
+    font-size: 48px;
+    font-weight: 600;
+    display: inline-block;
+    letter-spacing: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFF;
+    box-sizing: border-box;
+    animation: spotlight 2s linear infinite alternate;
+}
+
+@keyframes spotlight {
+    0% , 20% {
+        opacity: 1;
+        letter-spacing: 2px;
+    }
+    80% , 100% {
+        opacity: 0;
+        letter-spacing: 32px;
+    }
+}
 @media (max-width: 992px) {
     #login-form {
         margin-top: 20px;
