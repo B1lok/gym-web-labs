@@ -67,11 +67,11 @@
 
 
 <main class="main m-2">
-    <section class="bg-secondary rounded mb-2">
+    <section class="about  rounded mb-2 mx-5">
         <div class="container  p-3  col-11 ">
             <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-12 col-sm-12 col-11 text-center">
-                    <span class="about-loader ">ABOUT</span>
+                <div class="col-lg-6 col-md-12 col-sm-6 col-11 text-center">
+                    <span class="about-loader h1 text-dark">ABOUT</span>
                     <a class="link-dark" href="#slider"><p class="h5">CLICK HERE TO SEE GYM AREAS</p></a>
                     <p class="text-justify">The gym, often regarded as a temple of physical transformation, is a
                         sanctuary where individuals embark on journeys to enhance their fitness, strength, and overall
@@ -98,7 +98,7 @@
             </div>
         </div>
     </section>
-    <section class="mb-2 bg-dark rounded" id="slider">
+    <section class="mb-2 p-3 bg-secondary-subtle rounded" id="slider">
         <div id="carouselExampleCaptions" class="slider carousel slide">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -110,21 +110,21 @@
             </div>
             <div class="carousel-inner h-100">
                 <div class="carousel-item active text-center">
-                    <img src="/assets/img/gymZone.jpg" alt="...">
+                    <img class="rounded" src="/assets/img/gymZone.jpg" alt="...">
                     <div class="carousel-caption  d-block">
                         <h5>First slide label</h5>
                         <p>Some representative placeholder content for the first slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item text-center">
-                    <img src="/assets/img/box.jpg" alt="...">
+                    <img class="rounded" src="/assets/img/box.jpg" alt="...">
                     <div class="carousel-caption  d-block">
                         <h5>Second slide label</h5>
                         <p>Some representative placeholder content for the second slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item text-center ">
-                    <img src="/assets/img/cardio.jpg" alt="...">
+                    <img class="rounded" src="/assets/img/cardio.jpg" alt="...">
                     <div class="carousel-caption  d-block">
                         <h5>Third slide label</h5>
                         <p>Some representative placeholder content for the third slide.</p>
@@ -143,16 +143,15 @@
             </button>
         </div>
     </section>
-    <section class="bg-secondary-subtle rounded ">
-        <div class="container p-5 col-11 border">
+    <section class="p-5 rounded ">
+        <div class="container sign-up-form p-5 col-11 rounded">
             <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-12 col-sm-12 col-11">
-                    <h3 class="text-center mb-4">Sign up for your first training session!</h3>
-                    <h5 class="text-center mb-3">Leave your phone number and our manager will contact you</h5>
-                    <div class="text-center mb-2">
-                        <span class="loader text-center"></span>
-                        <form class="mt-4">
-                            <input class="form-control mb-2 w-50 mx-auto" id="tel" type="tel" name="tel"
+                <div class="text-center col-lg-12 col-md-12 col-sm-12 col-11">
+                    <h3 class="mb-4">Sign up for your first training session!</h3>
+                    <h5 class="mb-3">Leave your phone number and our manager will contact you</h5>
+                    <div class="mb-2 col-lg-12 col-md-12 col-sm-12 col-11">
+                        <form class="mt-4 mx-auto">
+                            <input class="form-control mb-2 mx-auto" id="tel" type="tel" name="tel"
                                    placeholder="+380...">
                             <button class="btn btn-dark text-center" type="submit">Call me!</button>
                         </form>
