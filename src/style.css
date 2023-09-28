@@ -43,4 +43,8 @@
     .navbar-list {
         flex-direction: column;
     }
+
+    .nav-item:first-child {
+        margin-right: 0;
+    }
 }
