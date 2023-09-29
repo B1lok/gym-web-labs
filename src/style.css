@@ -18,6 +18,7 @@ html {
     0% {
         transform: translate(-50%, 5px);
     }
+
     100% {
         transform: translate(-50%, -5px);
     }
@@ -47,10 +48,7 @@ html {
         opacity: 1;
         letter-spacing: 2px;
     }
-    80%, 100% {
-        opacity: 0;
-        letter-spacing: 32px;
-    }
+
     80%, 100% {
         opacity: 0;
         letter-spacing: 32px;
