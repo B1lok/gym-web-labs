@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -61,11 +62,10 @@ html {
 }
 
 .header {
-    background-image: url(../assets/img/gym-entry.jpg);
     background-size: cover;
     background-position: center;
     position: relative;
-    height: 400px;
+    height: 40vh;
 }
 
 .header-content {
@@ -84,33 +84,27 @@ html {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+.header-index {
+    background-image: url(../assets/img/gym-entry.jpg);
+}
+
+.header-faq {
+    background-image: url(../assets/img/faq-background.jpg);
+}
+
+.header-membership {
+    background-image: url(../assets/img/membership-img.jpg);
+}
+
+.header-contacts {
+    background-image: url(../assets/img/contact-page.jpg);
+}
 
 .question-block button {
     border: 0.1rem solid #FFFFFF;
     height: 150px;
 }
-.question-block button:hover{
-    border: 0.1rem solid orange;
-}
 
-.faq-header {
-    background-image: url(../assets/img/faq-background.jpg);
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    height: 300px;
-}
-.membership-header {
-    background-image: url(../assets/img/membership-img.jpg);
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    height: 300px;
-}
-.contacts-header {
-    background-image: url(../assets/img/contact-page.jpg);
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    height: 300px;
+.question-block button:hover {
+    border: 0.1rem solid orange;
 }
