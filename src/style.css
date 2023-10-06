@@ -1,66 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html {
     scroll-behavior: smooth;
 }
 
-.slider {
-    height: 500px;
-}
-
-.footer svg {
-    transition: transform 0.5s;
-}
-
-.footer svg:hover {
-    transform: scale(1.2);
-}
-
-@keyframes bump {
-    0% {
-        transform: translate(-50%, 5px);
-    }
-
-    100% {
-        transform: translate(-50%, -5px);
-    }
-}
-
-.about {
-    background-color: #FFFAF0;
-}
-
-.about-loader {
-    font-size: 48px;
-    font-weight: 600;
-    display: inline-block;
-    letter-spacing: 2px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #FFF;
-    box-sizing: border-box;
-    animation: spotlight 2s linear infinite alternate;
-}
-
-.sign-up-form {
-    background-color: #FFFAF0;
-}
-
-@keyframes spotlight {
-    0%, 20% {
-        opacity: 1;
-        letter-spacing: 2px;
-    }
-
-    80%, 100% {
-        opacity: 0;
-        letter-spacing: 32px;
-    }
-}
-
 .header {
-    background-image: url(../assets/img/gym-entry.jpg);
     background-size: cover;
     background-position: center;
-    position: relative;
-    height: 400px;
+    height: 40vh;
 }
 
 .header-content {
@@ -77,4 +28,78 @@ html {
 
 .header .btn:hover {
     background-color: rgba(255, 255, 255, 0.2);
+}
+
+.header-index {
+    background-image: url(../assets/img/gym-entry.jpg);
+}
+
+.header-faq {
+    background-image: url(../assets/img/faq-background.jpg);
+}
+
+.header-membership {
+    background-image: url(../assets/img/membership-img.jpg);
+}
+
+.header-contacts {
+    background-image: url(../assets/img/contact-page.jpg);
+}
+
+.footer svg {
+    transition: transform 0.5s;
+}
+
+.footer svg:hover {
+    transform: scale(1.2);
+}
+
+.bg-color-1-index {
+    background-color: #FFFAF0;
+}
+
+.about-loader {
+    font-size: 48px;
+    font-weight: 600;
+    display: inline-block;
+    letter-spacing: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFF;
+    box-sizing: border-box;
+    animation: spotlight 2s linear infinite alternate;
+}
+
+.slider {
+    height: 500px;
+}
+
+@keyframes spotlight {
+    0%, 20% {
+        opacity: 1;
+        letter-spacing: 2px;
+    }
+
+    80%, 100% {
+        opacity: 0;
+        letter-spacing: 32px;
+    }
+}
+
+@keyframes bump {
+    0% {
+        transform: translate(-50%, 5px);
+    }
+
+    100% {
+        transform: translate(-50%, -5px);
+    }
+}
+
+.question-block button {
+    border: 0.1rem solid #FFFFFF;
+    height: 150px;
+}
+
+.question-block button:hover {
+    border: 0.1rem solid orange;
 }

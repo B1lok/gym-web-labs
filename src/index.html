@@ -17,7 +17,7 @@
 <body>
 <nav class="navbar navbar-expand-lg sticky-top bg-secondary-subtle">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.html">
             <svg fill="#000000" height="64px" id="Layer_1" viewBox="0 0 512 512"
                  width="64px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -39,10 +39,10 @@
         <div class="navbar-collapse collapse" id="navbarContent">
             <ul class="navbar-nav me-auto mx-auto text-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">REFERENCE 1</a>
+                    <a class="nav-link" href="membership.html">JOIN US</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">REFERENCE 2</a>
+                    <a class="nav-link" href="contacts.html">CONTACTS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">REFERENCE 3</a>
@@ -51,17 +51,22 @@
                     <a class="nav-link" href="#">REFERENCE 4</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">REFERENCE 5</a>
+                    <a class="nav-link" href="faq.html">FAQ</a>
                 </li>
             </ul>
-            <form action="#" class="d-flex justify-content-center my-lg-0 mt-3 mb-2">
-                <button class="btn btn-outline-primary">Login</button>
-            </form>
+            <div class="d-flex align-items-center justify-content-center flex-lg-row flex-column column-gap-3">
+                <form action="sign-in.html" class="my-lg-0 mt-3">
+                    <button class="btn btn-primary">Sign in</button>
+                </form>
+                <form action="sign-up.html" class="my-lg-0 mt-2 mb-2">
+                    <button class="btn btn-outline-danger">Sign up</button>
+                </form>
+            </div>
         </div>
     </div>
 </nav>
 
-<header class="header bg-secondary rounded m-2">
+<header class="header header-index bg-secondary rounded">
     <div class="header-content">
         <p class="h1 mb-3">WELCOME TO OUR GYM</p>
         <p class="h5 mb-5">some text some text some text some text</p>
@@ -72,14 +77,15 @@
     </div>
 </header>
 
-<main class="main m-2">
-    <section class="about rounded mb-2 mx-5">
-        <div class="container p-3 col-11">
+<main class="main my-3 mx-2 mx-lg-5 mx-md-4 mx-sm-3">
+    <section class="mb-3 mx-lg-5 mx-md-4 mx-sm-3 rounded bg-color-1-index">
+        <div class="container p-3">
             <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-12 col-sm-6 col-11 text-center">
+                <div class="col-12 col-lg-8 col-md-10 text-center">
                     <span class="about-loader h1 text-dark">ABOUT</span>
-                    <a class="link-dark" href="#slider"><p class="h5">CLICK HERE TO SEE GYM AREAS</p></a>
-                    <p class="text-justify">The gym, often regarded as a temple of physical transformation, is a
+                    <a class="link-dark link-offset-2-hover" href="#slider"><p class="h5">CLICK HERE TO SEE GYM
+                        AREAS</p></a>
+                    <p class="">The gym, often regarded as a temple of physical transformation, is a
                         sanctuary where individuals embark on journeys to enhance their fitness, strength, and overall
                         well-being. This modern fitness haven offers a dynamic space for people of all ages and
                         backgrounds to pursue their health and fitness goals. Whether you're a seasoned athlete seeking
@@ -89,7 +95,7 @@
                         individuals striving for personal improvement, the gym is not just a place to exercise; it's a
                         place where aspirations are realized, limits are pushed, and bodies and minds are
                         transformed.</p>
-                    <p class="text-justify">
+                    <p class="m-0">
                         Beyond its physical benefits, the gym serves as a hub for social interaction and personal
                         growth. It's a place where friendships are forged through shared sweat and determination, where
                         individuals find solace and empowerment in their daily workouts. The gym is a testament to human
@@ -103,15 +109,16 @@
             </div>
         </div>
     </section>
-    <section class="mb-2 p-3 bg-secondary-subtle rounded" id="slider">
-        <div class="slider carousel slide" id="carouselExampleCaptions">
+    <section class="mb-3 mx-lg-5 mx-md-4 mx-sm-3 p-3 bg-secondary-subtle rounded" id="slider">
+        <div class="slider carousel slide" id="carouselCaptions">
             <div class="carousel-indicators">
-                <button aria-current="true" aria-label="Slide 1" class="active" data-bs-slide-to="0"
-                        data-bs-target="#carouselExampleCaptions" type="button"></button>
-                <button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#carouselExampleCaptions"
-                        type="button"></button>
-                <button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#carouselExampleCaptions"
-                        type="button"></button>
+                <button aria-current="true" aria-label="Slide 1" class="active"
+                        data-bs-slide-to="0" data-bs-target="#carouselCaptions" type="button">
+                </button>
+                <button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#carouselCaptions" type="button">
+                </button>
+                <button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#carouselCaptions" type="button">
+                </button>
             </div>
             <div class="carousel-inner h-100">
                 <div class="carousel-item active text-center">
@@ -136,31 +143,26 @@
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleCaptions"
-                    type="button">
+            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselCaptions" type="button">
                 <span aria-hidden="true" class="carousel-control-prev-icon"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleCaptions"
-                    type="button">
+            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselCaptions" type="button">
                 <span aria-hidden="true" class="carousel-control-next-icon"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
     </section>
-    <section class="p-5 rounded">
-        <div class="container sign-up-form p-5 col-11 rounded">
+    <section class="mx-lg-5 mx-md-4 mx-sm-3 rounded">
+        <div class="container p-4 rounded bg-color-1-index">
             <div class="row justify-content-center">
-                <div class="text-center col-lg-12 col-md-12 col-sm-12 col-11">
+                <div class="col-12 col-lg-8 col-md-10 text-center">
                     <h3 class="mb-4">Sign up for your first training session!</h3>
-                    <h5 class="mb-3">Leave your phone number and our manager will contact you</h5>
-                    <div class="mb-2 col-lg-12 col-md-12 col-sm-12 col-11">
-                        <form class="mt-4 mx-auto">
-                            <input class="form-control mb-2 mx-auto" id="tel" name="tel" placeholder="+380..."
-                                   type="tel">
-                            <button class="btn btn-dark text-center" type="submit">Call me!</button>
-                        </form>
-                    </div>
+                    <h5 class="mb-4">Leave your phone number and our manager will contact you</h5>
+                    <form>
+                        <input class="form-control mb-4" id="tel" name="tel" placeholder="+380..." type="tel">
+                        <button class="btn btn-dark text-center" type="submit">Call me!</button>
+                    </form>
                 </div>
             </div>
         </div>
