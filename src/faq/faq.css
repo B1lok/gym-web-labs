@@ -1,0 +1,8 @@
+.question-block button {
+    border: 0.1rem solid white;
+    height: 150px;
+}
+
+.question-block button:hover {
+    border: 0.1rem solid orange;
+}

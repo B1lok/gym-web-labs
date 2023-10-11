@@ -12,6 +12,7 @@ html {
     background-size: cover;
     background-position: center;
     height: 40vh;
+    background-image: url(../assets/img/gym-entry.jpg);
 }
 
 .header-content {
@@ -30,22 +31,6 @@ html {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-.header-index {
-    background-image: url(../assets/img/gym-entry.jpg);
-}
-
-.header-faq {
-    background-image: url(../assets/img/faq-background.jpg);
-}
-
-.header-membership {
-    background-image: url(../assets/img/membership-img.jpg);
-}
-
-.header-contacts {
-    background-image: url(../assets/img/contact-page.jpg);
-}
-
 .footer svg {
     transition: transform 0.5s;
 }
@@ -54,7 +39,7 @@ html {
     transform: scale(1.2);
 }
 
-.bg-color-1-index {
+.bg-color-1 {
     background-color: #FFFAF0;
 }
 
@@ -93,13 +78,4 @@ html {
     100% {
         transform: translate(-50%, -5px);
     }
-}
-
-.question-block button {
-    border: 0.1rem solid #FFFFFF;
-    height: 150px;
-}
-
-.question-block button:hover {
-    border: 0.1rem solid orange;
 }
