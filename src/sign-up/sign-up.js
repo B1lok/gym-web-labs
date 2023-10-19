@@ -5,12 +5,13 @@ const surnameInput = document.getElementById('surname')
 const fathersNameInput = document.getElementById('father')
 const dateInput = document.getElementById('date')
 const groupInput = document.getElementById('group')
-const genderInput = document.querySelector('input[name="gender"]:checked')
 const phoneNumberInput = document.getElementById('phone')
 const signUpButton = document.getElementById('sign-up')
+const deleteSelectedButton = document.getElementById('delete')
+const duplicateSelectedButton = document.getElementById('duplicate')
 const tableBody = document.getElementById('table-body')
 
-const users = []
+let users = []
 let usersId = 1
 
 const today = new Date();
@@ -33,9 +34,15 @@ fathersNameInput.addEventListener('input', function (){isInitialsCorrect(fathers
 groupInput.addEventListener('change', isGroupCorrect)
 phoneNumberInput.addEventListener('input', isPhoneNumberCorrect)
 signUpButton.addEventListener('click', addUser)
+deleteSelectedButton.addEventListener('click', deleteAllSelected)
+duplicateSelectedButton.addEventListener('click', duplicateAllSelected)
+
 function addUser(event) {
     event.preventDefault()
     if (!isUserValid()) return
+    resetTableBody()
+    const genderInput = document.querySelector('input[name="gender"]:checked');
+
     const user = {
         id : usersId++,
         name : nameInput.value,
@@ -49,15 +56,70 @@ function addUser(event) {
         gender : genderInput.value
     }
     users.push(user)
-
+    createUsers()
+    resetFormInputs()
 }
+function deleteAllSelected(){
+    const checkboxes = document.querySelectorAll('input[name="user-checkbox"]:checked');
+
+    const selectedUserIds = Array.from(checkboxes).map(checkbox => parseInt(checkbox.value));
+
+    users = users.filter(user => !selectedUserIds.includes(user.id));
+
+    resetTableBody()
+    createUsers()
+}
+
+function duplicateAllSelected(){
+    const checkboxes = document.querySelectorAll('input[name="user-checkbox"]:checked');
+
+    const selectedUserIds = Array.from(checkboxes).map(checkbox => parseInt(checkbox.value));
+
+    users.filter(user => selectedUserIds.includes(user.id))
+        .map(user => {
+            const newUser = {...user}
+            newUser.id = usersId++
+            users.push(newUser)
+        })
+    resetTableBody()
+    createUsers()
+}
+
 
 function createUsers(){
     users.forEach(user => {
-
+        const newRow = document.createElement('tr');
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = user.id;
+        checkbox.name = 'user-checkbox'
+        const checkboxCell = document.createElement('td');
+        checkboxCell.appendChild(checkbox);
+        newRow.appendChild(checkboxCell);
+        const cells = ['name', 'surname', 'fathersName', 'email', 'password', 'dateOfBirth', 'group', 'phoneNumber', 'gender'];
+        cells.forEach(propertyName => {
+            const cell = document.createElement('td');
+            cell.textContent = user[propertyName];
+            newRow.appendChild(cell);
+        });
+        tableBody.appendChild(newRow)
     })
 }
-
+function resetFormInputs() {
+    emailInput.value = '';
+    passwordInput.value = '';
+    nameInput.value = '';
+    surnameInput.value = '';
+    fathersNameInput.value = '';
+    dateInput.value = '';
+    groupInput.value = '';
+    phoneNumberInput.value = '';
+}
+function resetTableBody(){
+    while (tableBody.firstChild) {
+        tableBody.removeChild(tableBody.firstChild);
+    }
+}
 
 function isUserValid(){
     const isEmailValid = isEmailCorrect();
