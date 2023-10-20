@@ -13,10 +13,7 @@ const duplicateSelectedButton = document.getElementById('duplicate')
 const signUpButton = document.getElementById('sign-up');
 const tableBody = document.getElementById('table-body');
 
-
-const today = new Date();
-const maxDate = new Date(today.getFullYear(), today.getMonth(), today.getDate()).toISOString().split('T')[0];
-dateInput.setAttribute('max', maxDate);
+dateInput.setAttribute('max', new Date().toISOString().split('T')[0]);
 
 
 const maskOptions = {
@@ -50,6 +47,7 @@ emailInput.addEventListener('input', isEmailValid);
 passwordInput.addEventListener('input', isPasswordValid);
 groupInput.addEventListener('change', isGroupValid);
 phoneNumberInput.addEventListener('input', isPhoneNumberValid);
+dateInput.addEventListener('input', isDateValid)
 signUpButton.addEventListener('click', addUser);
 deleteSelectedButton.addEventListener('click', deleteSelected)
 duplicateSelectedButton.addEventListener('click', duplicateSelected)
@@ -57,7 +55,7 @@ duplicateSelectedButton.addEventListener('click', duplicateSelected)
 
 function addUser(event) {
     event.preventDefault();
-    if (!isUserValid()) return;
+    // if (!isUserValid()) return;
     resetTableBody();
     const genderInput = document.querySelector('input[name="gender"]:checked');
 
@@ -185,7 +183,7 @@ function isUserValid() {
         isInitialsValid(nameInput.value, document.getElementById('nameError')) &&
         isInitialsValid(surnameInput.value, document.getElementById('surnameError')) &&
         isInitialsValid(fathersNameInput.value, document.getElementById('fathersNameError')) &&
-        isGenderValid() && isGroupValid() && isPhoneNumberValid();
+        isGenderValid() && isDateValid() && isGroupValid() && isPhoneNumberValid();
 }
 
 function isEmailValid() {
@@ -225,7 +223,15 @@ function isInitialsValid(initialValue, errorMessage) {
     errorMessage.textContent = '';
     return true;
 }
-
+function isDateValid(){
+    const date = new Date(dateInput.value)
+    if (isNaN(date) || date > new Date() || date.getFullYear() < new Date().getFullYear()-150) {
+        document.getElementById('dateError').textContent = 'Invalid date'
+        return false
+    }
+    document.getElementById('dateError').textContent = ''
+    return true
+}
 function isGenderValid() {
     if (!Array.from(genderInputs).some(input => input.checked)) {
         document.getElementById('genderError').textContent = 'Choose your gender';
