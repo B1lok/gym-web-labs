@@ -122,16 +122,16 @@ function hideUnselectedCheckboxes() {
 
     document.getElementsByName('delete').forEach(element => {
         if (selectedUserIds.includes(parseInt(element.value))) {
-            element.style.display = 'inline-block';
+            element.style.visibility = 'visible';
         } else {
-            element.style.display = 'none';
+            element.style.visibility = 'hidden';
         }
     });
     document.getElementsByName('duplicate').forEach(element => {
         if (selectedUserIds.includes(parseInt(element.value))) {
-            element.style.display = 'inline-block';
+            element.style.visibility = 'visible';
         } else {
-            element.style.display = 'none';
+            element.style.visibility = 'hidden';
         }
     });
 }
