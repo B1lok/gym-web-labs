@@ -7,6 +7,8 @@ const genderInputs = document.getElementsByName('gender');
 const dateInput = document.getElementById('date');
 const groupInput = document.getElementById('group');
 const phoneNumberInput = document.getElementById('phone');
+const deleteSelectedButton = document.getElementById('delete')
+const duplicateSelectedButton = document.getElementById('duplicate')
 
 const signUpButton = document.getElementById('sign-up');
 const tableBody = document.getElementById('table-body');
@@ -49,11 +51,13 @@ passwordInput.addEventListener('input', isPasswordValid);
 groupInput.addEventListener('change', isGroupValid);
 phoneNumberInput.addEventListener('input', isPhoneNumberValid);
 signUpButton.addEventListener('click', addUser);
+deleteSelectedButton.addEventListener('click', deleteSelected)
+duplicateSelectedButton.addEventListener('click', duplicateSelected)
 
 
 function addUser(event) {
     event.preventDefault();
-    // if (!isUserValid()) return;
+    if (!isUserValid()) return;
     resetTableBody();
     const genderInput = document.querySelector('input[name="gender"]:checked');
 
@@ -97,43 +101,15 @@ function duplicateSelected() {
 }
 
 function deleteOne(user) {
-    const checkboxes = document.querySelectorAll('input[name="user-checkbox"]:checked');
-    if (checkboxes.length !== 0) {
-        return;
-    }
     users = users.filter(user1 => user1.id !== user.id);
     resetTableBody();
     createUsers();
 }
 
 function duplicateOne(user) {
-    const checkboxes = document.querySelectorAll('input[name="user-checkbox"]:checked');
-    if (checkboxes.length !== 0) {
-        return;
-    }
     users.push({...user, id: usersId++});
     resetTableBody();
     createUsers();
-}
-
-function hideUnselectedCheckboxes() {
-    const checkboxes = document.querySelectorAll('input[name="user-checkbox"]:checked');
-    const selectedUserIds = Array.from(checkboxes).map(checkbox => parseInt(checkbox.value));
-
-    document.getElementsByName('delete').forEach(element => {
-        if (selectedUserIds.includes(parseInt(element.value))) {
-            element.style.display = 'inline-block';
-        } else {
-            element.style.display = 'none';
-        }
-    });
-    document.getElementsByName('duplicate').forEach(element => {
-        if (selectedUserIds.includes(parseInt(element.value))) {
-            element.style.display = 'inline-block';
-        } else {
-            element.style.display = 'none';
-        }
-    });
 }
 
 function createUsers() {
@@ -143,7 +119,6 @@ function createUsers() {
         checkbox.value = user.id;
         checkbox.name = 'user-checkbox';
         checkbox.classList.add('me-auto');
-        checkbox.addEventListener('click', hideUnselectedCheckboxes);
 
         const deleteButton = document.createElement('button');
         deleteButton.name = 'delete';
