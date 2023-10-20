@@ -19,55 +19,71 @@
 <body>
 
 <main class="vh-100">
-    <div class="container">
-        <div class="row h-100 d-flex justify-content-center align-items-center">
+    <div class="container h-100">
+        <div class="row h-100 d-flex align-items-center justify-content-center">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <form action="#" class="bg-dark p-3 p-sm-5 rounded-5">
-                    <h2 class="mb-4 mb-sm-5 text-center text-white">Sign up</h2>
+                <form action="#" class="bg-dark rounded-5 p-4 py-sm-4 px-sm-5">
+                    <h2 class="text-center text-white mb-4 mb-sm-5">Sign up</h2>
                     <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <div class="form-floating mb-3">
+                        <div class="col-6 mb-3">
+                            <div class="form-floating">
                                 <input class="form-control" id="email" placeholder="name@example.com" type="email">
                                 <label for="email">Email</label>
                                 <span class="text-danger" id="emailError"></span>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6">
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="password" placeholder="Password" type="password">
+                        <div class="col-6 mb-3">
+                            <div class="form-floating">
+                                <input class="form-control" id="password" placeholder="Password" required
+                                       type="password">
                                 <label for="password">Password</label>
                                 <span class="text-danger" id="passwordError"></span>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6">
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="name" placeholder="Name" type="">
+                        <div class="col-6 mb-3">
+                            <div class="form-floating">
+                                <input class="form-control" id="name" placeholder="Name" required type="text">
                                 <label for="name">Name</label>
                                 <span class="text-danger" id="nameError"></span>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6">
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="surname" placeholder="Surname" type="text">
+                        <div class="col-6 mb-3">
+                            <div class="form-floating">
+                                <input class="form-control" id="surname" placeholder="Surname" required type="text">
                                 <label for="surname">Surname</label>
                                 <span class="text-danger" id="surnameError"></span>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="father" placeholder="Father's name" type="text">
+                        <div class="col-12 mb-3">
+                            <div class="form-floating">
+                                <input class="form-control" id="father" placeholder="Father's name" required
+                                       type="text">
                                 <label for="father">Father's name</label>
                                 <span class="text-danger" id="fathersNameError"></span>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-6 mb-3">
-                            <div class="form-floating">
-                                <input class="form-control" id="date" placeholder="Date" type="date" required>
-                                <label for="date">Date of birth</label>
+                        <div class="col-12 text-white mb-3">
+                            <div class="btn-group w-100" role="group">
+                                <input autocomplete="off" class="btn-check" id="male" name="gender" required
+                                       type="radio" value="Male">
+                                <label class="btn btn-outline-light" for="male">Male</label>
+
+                                <input autocomplete="off" class="btn-check" id="female" name="gender" required
+                                       type="radio" value="Female">
+                                <label class="btn btn-outline-light" for="female">Female</label>
+
+                                <input autocomplete="off" class="btn-check" id="other" name="gender" required
+                                       type="radio" value="Other">
+                                <label class="btn btn-outline-light" for="other">Other</label>
                             </div>
+                            <span class="text-danger" id="genderError"></span>
                         </div>
-                        <div class="col-12 col-lg-6 mb-3 d-flex">
-                            <select aria-label="Group" class="form-select py-3" id="group" name="group">
+                        <div class="col-6 mb-3">
+                            <input aria-label="Date of birth" class="form-control" id="date" placeholder="Date" required
+                                   type="date">
+                        </div>
+                        <div class="col-6 mb-3">
+                            <select aria-label="Group" class="form-select" id="group" name="group" required>
                                 <option disabled selected value="">Group</option>
                                 <option value="IA-21">IA-21</option>
                                 <option value="IA-22">IA-22</option>
@@ -76,36 +92,19 @@
                             </select>
                             <span class="text-danger" id="groupError"></span>
                         </div>
-                        <div class="col-12 col-lg-6 mb-3 text-white">
-                            <div class="btn-group" role="group">
-                                <input autocomplete="off" class="btn-check" id="male" name="gender" required
-                                       type="radio" value="Male">
-                                <label class="btn btn-outline-danger" for="male">Male</label>
-
-                                <input autocomplete="off" class="btn-check" id="female" name="gender" required
-                                       type="radio" value="Female">
-                                <label class="btn btn-outline-danger" for="female">Female</label>
-
-                                <input autocomplete="off" class="btn-check" id="other" name="gender"
-                                       required type="radio" value="Prefer not to tell">
-                                <label class="btn btn-outline-danger" for="other">Other</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 mb-3">
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" name="phone" placeholder="Phone number" type="text" required>
-                                <label for="phone">Phone number</label>
-                            </div>
+                        <div class="col-12 mb-3">
+                            <input aria-label="phone number" class="form-control fs-5" id="phone" name="phone"
+                                   placeholder="Phone number" required type="text">
                             <span class="text-danger" id="phoneError"></span>
                         </div>
                         <div class="col-12 mb-4">
                             <div class="form-floating">
                                 <input class="form-control" id="file" placeholder="File" type="file">
-                                <label for="father">File</label>
+                                <label for="father">Some useful text</label>
                             </div>
                         </div>
                     </div>
-                    <button class="w-100 btn btn-outline-light btn-lg px-5" id="sign-up" type="submit">Sign up</button>
+                    <button class="w-100 btn btn-outline-light btn-lg" id="sign-up" type="submit">Sign up</button>
                     <p class="mt-5 mb-0 text-white text-center">
                         Do have an account?
                         <a class="text-primary fw-bold" href="../sign-in/sign-in.html">Sign in</a>
@@ -114,32 +113,28 @@
             </div>
         </div>
     </div>
-    <div class="position-absolute top-0 end-0 mt-2 me-2">
-        <button class="btn btn-sm btn-dark" id="delete">Delete</button>
-        <button class="btn btn-sm btn-dark" id="duplicate">Duplicate</button>
-    </div>
-    <section class="flex-grow-1 table-responsive tg-table">
-        <h2 class="text-center">USERS</h2>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Actions:</th>
-                <th>Name:</th>
-                <th>Surname:</th>
-                <th>Father's name:</th>
-                <th>Email:</th>
-                <th>Password:</th>
-                <th>Date of birth:</th>
-                <th>Group:</th>
-                <th>Phone number:</th>
-                <th>Gender:</th>
-            </tr>
-            </thead>
-            <tbody id="table-body">
-            </tbody>
-        </table>
-    </section>
 </main>
+
+<section class="flex-grow-1 table-responsive tg-table">
+    <h2 class="text-center">USERS</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Actions:</th>
+            <th>Name:</th>
+            <th>Surname:</th>
+            <th>Father's name:</th>
+            <th>Email:</th>
+            <th>Password:</th>
+            <th>Date of birth:</th>
+            <th>Group:</th>
+            <th>Phone number:</th>
+            <th>Gender:</th>
+        </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+</section>
 
 <script crossorigin="anonymous"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
