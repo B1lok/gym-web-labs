@@ -117,19 +117,23 @@ function duplicateOne(user) {
 }
 
 function hideUnselectedCheckboxes() {
-    // const checkboxes = document.querySelectorAll('input[name="user-checkbox"]:checked');
-    // const selectedUserIds = Array.from(checkboxes).map(checkbox => parseInt(checkbox.value));
-    //
-    // document.getElementsByName('delete').forEach(element => {
-    //     if (!selectedUserIds.includes(parseInt(element.value))) {
-    //         element.style.display = 'none';
-    //     }
-    // });
-    // document.getElementsByName('duplicate').forEach(element => {
-    //     if (!selectedUserIds.includes(parseInt(element.value))) {
-    //         element.style.display = 'none';
-    //     }
-    // });
+    const checkboxes = document.querySelectorAll('input[name="user-checkbox"]:checked');
+    const selectedUserIds = Array.from(checkboxes).map(checkbox => parseInt(checkbox.value));
+
+    document.getElementsByName('delete').forEach(element => {
+        if (selectedUserIds.includes(parseInt(element.value))) {
+            element.style.display = 'inline-block';
+        } else {
+            element.style.display = 'none';
+        }
+    });
+    document.getElementsByName('duplicate').forEach(element => {
+        if (selectedUserIds.includes(parseInt(element.value))) {
+            element.style.display = 'inline-block';
+        } else {
+            element.style.display = 'none';
+        }
+    });
 }
 
 function createUsers() {
