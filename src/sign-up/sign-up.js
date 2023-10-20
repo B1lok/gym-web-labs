@@ -47,13 +47,14 @@ genderInputs.forEach(input => {
 emailInput.addEventListener('input', isEmailValid);
 passwordInput.addEventListener('input', isPasswordValid);
 groupInput.addEventListener('change', isGroupValid);
+dateInput.addEventListener('input', isDateValid);
 phoneNumberInput.addEventListener('input', isPhoneNumberValid);
 signUpButton.addEventListener('click', addUser);
 
 
 function addUser(event) {
     event.preventDefault();
-    // if (!isUserValid()) return;
+    if (!isUserValid()) return;
     resetTableBody();
     const genderInput = document.querySelector('input[name="gender"]:checked');
 
@@ -210,7 +211,7 @@ function isUserValid() {
         isInitialsValid(nameInput.value, document.getElementById('nameError')) &&
         isInitialsValid(surnameInput.value, document.getElementById('surnameError')) &&
         isInitialsValid(fathersNameInput.value, document.getElementById('fathersNameError')) &&
-        isGenderValid() && isGroupValid() && isPhoneNumberValid();
+        isGenderValid() && isDateValid() && isGroupValid() && isPhoneNumberValid();
 }
 
 function isEmailValid() {
@@ -257,6 +258,18 @@ function isGenderValid() {
         return false;
     }
     document.getElementById('genderError').textContent = '';
+    return true;
+}
+
+function isDateValid() {
+    const date = new Date(dateInput.value);
+    if (isNaN(date.getTime()) || today.getFullYear() <= date.getFullYear() || today.getFullYear() - 150 >= date.getFullYear()) {
+        console.log(1)
+        document.getElementById('dateError').textContent = 'Invalid date';
+        return false;
+    }
+    console.log(2)
+    document.getElementById('dateError').textContent = '';
     return true;
 }
 
