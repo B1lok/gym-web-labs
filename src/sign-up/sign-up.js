@@ -110,7 +110,7 @@ function deleteOne(user) {
 function duplicateOne(user) {
     users.push({...user, id: usersId++});
     recreateTableBodyWithRememberedCheckboxes();
-    document.getElementById('cb-' + user.id).checked = false;
+    document.getElementById(getCheckboxIdFromUser(user)).checked = false;
 }
 
 function checkAll() {
@@ -135,7 +135,7 @@ function getCheckboxId(checkbox) {
     return parseInt(checkbox.id.slice(3));
 }
 
-function getCheckboxIdWithUserId(user) {
+function getCheckboxIdFromUser(user) {
     return 'cb-3' + user.id;
 }
 
