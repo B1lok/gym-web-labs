@@ -14,6 +14,7 @@ const duplicateSelectedButton = document.getElementById('duplicate');
 const signUpButton = document.getElementById('sign-up');
 const tableBody = document.getElementById('table-body');
 
+const today = new Date();
 dateInput.setAttribute('max', new Date().toISOString().split('T')[0]);
 
 
