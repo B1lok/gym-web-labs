@@ -60,7 +60,7 @@ duplicateSelectedButton.addEventListener('click', checkCheckAll);
 
 function addUser(event) {
     event.preventDefault();
-    // if (!isUserValid()) return;
+    if (!isUserValid()) return;
     resetTableBody();
     const genderInput = document.querySelector('input[name="gender"]:checked');
 
