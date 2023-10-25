@@ -268,8 +268,8 @@ function isInitialsValid(initialValue, errorMessage) {
 }
 
 function isDateValid() {
-    const date = new Date(dateInput.value)
-    if (isNaN(date.getTime()) || date > new Date() || date.getFullYear() < new Date().getFullYear() - 150) {
+    const date = new Date(dateInput.value);
+    if (isNaN(date.getTime()) || today.getFullYear() <= date.getFullYear() || today.getFullYear() - 150 >= date.getFullYear()) {
         document.getElementById('dateError').textContent = 'Invalid date';
         return false;
     }
