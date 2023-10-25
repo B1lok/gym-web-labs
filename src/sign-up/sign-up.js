@@ -7,9 +7,10 @@ const genderInputs = document.getElementsByName('gender');
 const dateInput = document.getElementById('date');
 const groupInput = document.getElementById('group');
 const phoneNumberInput = document.getElementById('phone');
-const deleteSelectedButton = document.getElementById('delete')
-const duplicateSelectedButton = document.getElementById('duplicate')
 
+const checkAllButton = document.getElementById('checkAll');
+const deleteSelectedButton = document.getElementById('delete');
+const duplicateSelectedButton = document.getElementById('duplicate');
 const signUpButton = document.getElementById('sign-up');
 const tableBody = document.getElementById('table-body');
 
@@ -47,15 +48,18 @@ emailInput.addEventListener('input', isEmailValid);
 passwordInput.addEventListener('input', isPasswordValid);
 groupInput.addEventListener('change', isGroupValid);
 phoneNumberInput.addEventListener('input', isPhoneNumberValid);
-dateInput.addEventListener('input', isDateValid)
+dateInput.addEventListener('input', isDateValid);
 signUpButton.addEventListener('click', addUser);
-deleteSelectedButton.addEventListener('click', deleteSelected)
-duplicateSelectedButton.addEventListener('click', duplicateSelected)
+checkAllButton.addEventListener("change", checkAll);
+deleteSelectedButton.addEventListener('click', deleteSelected);
+deleteSelectedButton.addEventListener('click', checkCheckAll);
+duplicateSelectedButton.addEventListener('click', duplicateSelected);
+duplicateSelectedButton.addEventListener('click', checkCheckAll);
 
 
 function addUser(event) {
     event.preventDefault();
-    if (!isUserValid()) return;
+    // if (!isUserValid()) return;
     resetTableBody();
     const genderInput = document.querySelector('input[name="gender"]:checked');
 
@@ -78,55 +82,82 @@ function addUser(event) {
 
 function deleteSelected() {
     const checkboxes = document.querySelectorAll('input[name="user-checkbox"]:checked');
-    const selectedUserIds = Array.from(checkboxes).map(checkbox => parseInt(checkbox.value));
+    const selectedUserIds = Array.from(checkboxes).map(checkbox => getCheckboxId(checkbox));
 
     users = users.filter(user => !selectedUserIds.includes(user.id));
 
-    resetTableBody();
-    createUsers();
+    recreateTableBodyWithRememberedCheckboxes()
 }
 
 function duplicateSelected() {
     const checkboxes = document.querySelectorAll('input[name="user-checkbox"]:checked');
-    const selectedUserIds = Array.from(checkboxes).map(checkbox => parseInt(checkbox.value));
+    const selectedUserIds = Array.from(checkboxes).map(checkbox => getCheckboxId(checkbox));
 
     users.filter(user => selectedUserIds.includes(user.id))
         .map(user => {
             users.push({...user, id: usersId++});
         });
-    resetTableBody();
-    createUsers();
+
+    recreateTableBodyWithRememberedCheckboxes()
 }
 
 function deleteOne(user) {
     users = users.filter(user1 => user1.id !== user.id);
-    resetTableBody();
-    createUsers();
+    recreateTableBodyWithRememberedCheckboxes();
 }
 
 function duplicateOne(user) {
     users.push({...user, id: usersId++});
+    recreateTableBodyWithRememberedCheckboxes();
+    document.getElementById('cb-' + user.id).checked = false;
+}
+
+function checkAll() {
+    if (checkAllButton.checked) {
+        document.querySelectorAll('input[name="user-checkbox"]').forEach(checkbox => {
+            checkbox.checked = true;
+        });
+    } else {
+        document.querySelectorAll('input[name="user-checkbox"]').forEach(checkbox => {
+            checkbox.checked = false;
+        });
+    }
+}
+
+function checkCheckAll() {
+    if (!document.querySelectorAll('input[name="user-checkbox"]')) {
+        checkAllButton.checked = false;
+    }
+}
+
+function getCheckboxId(checkbox) {
+    return parseInt(checkbox.id.slice(3));
+}
+
+function getCheckboxIdWithUserId(user) {
+    return 'cb-3' + user.id;
+}
+
+function recreateTableBodyWithRememberedCheckboxes() {
+    let activeCheckboxes = Array.from(document.querySelectorAll('input[name="user-checkbox"]:checked'));
     resetTableBody();
     createUsers();
+
+    activeCheckboxes = activeCheckboxes.filter(ac => document.getElementById(ac.id));
+    activeCheckboxes.forEach(ch => document.getElementById(ch.id).checked = true);
 }
 
 function createUsers() {
     users.forEach(user => {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.value = user.id;
+        checkbox.id = 'cb-' + user.id;
         checkbox.name = 'user-checkbox';
         checkbox.classList.add('me-auto');
-
-        const deleteButton = document.createElement('button');
-        deleteButton.name = 'delete';
-        deleteButton.value = user.id;
-        deleteButton.classList.add('btn');
-        deleteButton.innerHTML = '<svg height="1em" style="fill: #ff0000" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>';
-        deleteButton.addEventListener('click', function () {
-            deleteOne(user);
+        checkbox.addEventListener('click', function () {
+            checkAllButton.checked = !Array.from(document.getElementsByName('user-checkbox'))
+                .some(checkbox => checkbox.checked === false);
         });
-        deleteButton.addEventListener('click', deleteSelected);
 
         const duplicateButton = document.createElement('button');
         duplicateButton.name = 'duplicate';
@@ -136,11 +167,21 @@ function createUsers() {
         duplicateButton.addEventListener('click', function () {
             duplicateOne(user);
         });
-        duplicateButton.addEventListener('click', duplicateSelected);
+        duplicateButton.addEventListener('click', checkCheckAll);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.name = 'delete';
+        deleteButton.value = user.id;
+        deleteButton.classList.add('btn');
+        deleteButton.innerHTML = '<svg height="1em" style="fill: #ff0000" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>';
+        deleteButton.addEventListener('click', function () {
+            deleteOne(user);
+        });
+        deleteButton.addEventListener('click', checkCheckAll);
 
         const checkboxButtons = document.createElement('span');
-        checkboxButtons.appendChild(deleteButton);
         checkboxButtons.appendChild(duplicateButton);
+        checkboxButtons.appendChild(deleteButton);
 
         const checkboxCell = document.createElement('td');
         checkboxCell.classList.add('d-flex', 'align-items-center', 'justify-content-start');
@@ -160,6 +201,7 @@ function createUsers() {
 }
 
 function resetTableBody() {
+    checkAllButton.checked = false;
     tableBody.innerHTML = '';
 }
 
@@ -223,15 +265,17 @@ function isInitialsValid(initialValue, errorMessage) {
     errorMessage.textContent = '';
     return true;
 }
-function isDateValid(){
+
+function isDateValid() {
     const date = new Date(dateInput.value)
-    if (isNaN(date) || date > new Date() || date.getFullYear() < new Date().getFullYear()-150) {
-        document.getElementById('dateError').textContent = 'Invalid date'
-        return false
+    if (isNaN(date.getTime()) || date > new Date() || date.getFullYear() < new Date().getFullYear() - 150) {
+        document.getElementById('dateError').textContent = 'Invalid date';
+        return false;
     }
-    document.getElementById('dateError').textContent = ''
-    return true
+    document.getElementById('dateError').textContent = '';
+    return true;
 }
+
 function isGenderValid() {
     if (!Array.from(genderInputs).some(input => input.checked)) {
         document.getElementById('genderError').textContent = 'Choose your gender';
